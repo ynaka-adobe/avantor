@@ -1,3 +1,6 @@
+/* ============================================================
+   columns-feature — default variant
+   ============================================================ */
 .columns-feature {
   margin: 16px auto;
   max-width: 1400px;
@@ -34,5 +37,137 @@
   .columns-feature > div > div {
     flex: 1;
     order: unset;
+  }
+}
+
+/* ============================================================
+   columns-feature — overlay variant
+   Modelled after app-simple-card-ui / Content_Cta (avantorsciences.com)
+   Image fills the container as background; text is overlaid on top.
+   Usage: "Columns Feature (Overlay)" in the block picker
+   ============================================================ */
+.columns-feature.overlay {
+  margin: 0 auto;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.columns-feature.overlay > div {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 280px;
+  padding: 40px 24px;
+}
+
+/* Dark overlay over the background image */
+.columns-feature.overlay > div::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgb(from var(--color-brand-blue) r g b / 0.72);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Background image column — stretched to fill container */
+.columns-feature.overlay .columns-feature-img-col {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  order: 0;
+}
+
+.columns-feature.overlay .columns-feature-img-col picture,
+.columns-feature.overlay .columns-feature-img-col img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Text content — sits above the overlay */
+.columns-feature.overlay .columns-feature-text-col {
+  position: relative;
+  z-index: 2;
+  color: var(--color-light);
+  max-width: 680px;
+  order: 1;
+}
+
+.columns-feature.overlay .columns-feature-text-col h1,
+.columns-feature.overlay .columns-feature-text-col h2,
+.columns-feature.overlay .columns-feature-text-col h3,
+.columns-feature.overlay .columns-feature-text-col h4 {
+  color: var(--color-light);
+  margin-block-start: 0;
+  font-size: var(--heading-font-size-l);
+  line-height: 1.2;
+}
+
+.columns-feature.overlay .columns-feature-text-col p {
+  font-size: var(--body-font-size-m);
+  line-height: 1.6;
+  margin-block: 12px 24px;
+  opacity: 0.9;
+}
+
+.columns-feature.overlay .columns-feature-text-col .btn {
+  display: inline-block;
+  font-weight: 600;
+  font-size: var(--body-font-size-s);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 12px 24px;
+  border: 2px solid var(--color-light);
+  color: var(--color-light);
+  background: transparent;
+  transition: background 0.2s, color 0.2s;
+}
+
+.columns-feature.overlay .columns-feature-text-col .btn:hover,
+.columns-feature.overlay .columns-feature-text-col .btn:focus {
+  background: var(--color-light);
+  color: var(--color-brand-blue);
+}
+
+/* Tablet and up — constrain inner content width */
+@media (width >= 600px) {
+  .columns-feature.overlay > div {
+    padding: 48px 40px;
+    min-height: 320px;
+  }
+}
+
+/* Desktop — wider container and limit text column width */
+@media (width >= 900px) {
+  .columns-feature.overlay {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .columns-feature.overlay > div {
+    flex-direction: row;
+    align-items: center;
+    padding: 64px 80px;
+    min-height: 360px;
+  }
+
+  /* Override default flex:1 for img col in overlay mode */
+  .columns-feature.overlay > div > div {
+    flex: unset;
+    order: unset;
+  }
+
+  .columns-feature.overlay .columns-feature-text-col {
+    max-width: 560px;
+  }
+
+  .columns-feature.overlay .columns-feature-text-col h2,
+  .columns-feature.overlay .columns-feature-text-col h3 {
+    font-size: var(--heading-font-size-xl);
   }
 }

@@ -1,7 +1,19 @@
 {
   "variantName": "columns-feature",
   "baseBlock": "columns",
-  "version": "1.0.0",
+  "version": "1.1.0",
+  "variants": [
+    {
+      "name": "default",
+      "description": "Side-by-side image and text layout with optional image column."
+    },
+    {
+      "name": "overlay",
+      "class": "overlay",
+      "description": "Full-bleed background image with brand-blue dark overlay and white text content on top. Modelled after the app-simple-card-ui / Content_Cta component on avantorsciences.com (e.g. 'Can't find it on our website? We'll find it for you!'). Author as 'Columns Feature (Overlay)' in the block picker.",
+      "authoring": "Left column: image (becomes background). Right column: heading, body text, CTA link."
+    }
+  ],
   "created": "2026-02-17T04:38:00.000Z",
   "sourceContext": {
     "originUrl": "https://www.avantorsciences.com/us/en/",

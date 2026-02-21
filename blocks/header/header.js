@@ -153,20 +153,21 @@ function decorateBrandSection(section) {
 
   const { codeBase } = getConfig();
 
-  // Replace any remote picture/img with the local logo SVG
+  // Always show the local logo SVG, replacing any existing picture/img if present
   const picture = brandLink.querySelector('picture');
   const remoteImg = !picture && brandLink.querySelector('img');
+  const img = document.createElement('img');
+  img.src = `${codeBase}/img/icons/logo.svg`;
+  img.alt = 'Avantor';
+  img.width = 300;
+  img.height = 43;
   if (picture || remoteImg) {
-    const img = document.createElement('img');
-    img.src = `${codeBase}/img/icons/logo.svg`;
-    img.alt = 'Avantor';
-    img.width = 300;
-    img.height = 43;
     (picture || remoteImg).replaceWith(img);
+  } else {
+    brandLink.prepend(img);
   }
 
   // Hide any remaining text nodes as screen-reader-only brand text
-  const iconOrImg = brandLink.querySelector('.icon, img, svg');
   const textNode = [...brandLink.childNodes].find(
     (n) => n.nodeType === Node.TEXT_NODE && n.textContent.trim(),
   );
@@ -174,12 +175,6 @@ function decorateBrandSection(section) {
     const span = document.createElement('span');
     span.className = 'brand-text';
     span.append(textNode);
-    brandLink.append(span);
-  } else if (!iconOrImg) {
-    // Fallback: no image and no text — add hidden brand name for a11y
-    const span = document.createElement('span');
-    span.className = 'brand-text';
-    span.textContent = 'Avantor';
     brandLink.append(span);
   }
 }

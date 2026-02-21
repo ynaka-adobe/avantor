@@ -1,0 +1,17 @@
+export default function decorate(block) {
+  /* change to ul, li */
+  const ul = document.createElement('ul');
+  [...block.children].forEach((row) => {
+    const li = document.createElement('li');
+    while (row.firstElementChild) li.append(row.firstElementChild);
+    [...li.children].forEach((div) => {
+      if (div.children.length === 1 && div.querySelector('picture')) div.className = 'cards-product-card-image';
+      else div.className = 'cards-product-card-body';
+    });
+    ul.append(li);
+  });
+  block.textContent = '';
+  block.append(ul);
+  if (ul.children.length === 3) block.classList.add('three-cards');
+  if (ul.children.length === 4) block.classList.add('four-cards');
+}

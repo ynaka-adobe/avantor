@@ -1,0 +1,250 @@
+/* Matches app-avtr-carousel from www.avantorsciences.com */
+.carousel-products {
+  margin: 16px auto;
+  max-width: 1400px;
+  width: 100%;
+  font-family: Averta, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.carousel-products .carousel-products-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding: 12px 0 16px;
+  justify-content: center;
+}
+
+.carousel-products .carousel-products-filter-btn {
+  margin: 0;
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: 1px solid #dadada;
+  background-color: var(--background-color);
+  cursor: pointer;
+  font-family: Averta, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.carousel-products .carousel-products-filter-btn:hover,
+.carousel-products .carousel-products-filter-btn:focus-visible {
+  background-color: #f0f0f0;
+  border-color: #999;
+}
+
+.carousel-products .carousel-products-filter-btn.active {
+  background-color: var(--color-gray-700, #494949);
+  border-color: var(--color-gray-700, #494949);
+  color: white;
+}
+
+.carousel-products .carousel-products-slide-hidden {
+  display: none !important;
+}
+
+.carousel-products .carousel-products-slides-container {
+  position: relative;
+}
+
+.carousel-products .carousel-products-slides,
+.carousel-products .carousel-products-slide-indicators {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel-products .carousel-products-slides {
+  display: flex;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overflow: scroll clip;
+}
+
+.carousel-products .carousel-products-slides::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-products .carousel-products-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 0 48px;
+  box-sizing: border-box;
+}
+
+.carousel-products .carousel-products-card {
+  flex: 0 0 auto;
+  width: 200px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color);
+  border: 1px solid #dadada;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.carousel-products .carousel-products-card-image {
+  position: relative;
+  line-height: 0;
+  flex: 0 0 170px;
+}
+
+.carousel-products .carousel-products-card-image > img:not(.carousel-products-card-image-overlay),
+.carousel-products .carousel-products-card-image > picture:not(.carousel-products-card-image-overlay) img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+}
+
+.carousel-products .carousel-products-card-image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.carousel-products .carousel-products-card-image-overlay img,
+.carousel-products .carousel-products-card-image img.carousel-products-card-image-overlay {
+  width: auto;
+  height: auto;
+  object-position: bottom left;
+}
+
+.carousel-products .carousel-products-card-content {
+  flex: 1;
+  padding: 12px;
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 4px;
+  min-height: 0;
+  text-align: start;
+}
+
+.carousel-products .carousel-products-card-content p {
+  margin: 0;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.carousel-products .carousel-products-card-content a {
+  font-weight: 400;
+  text-decoration: none;
+  text-decoration-color: rgb(0 100 200);
+  text-decoration-line: none;
+  text-decoration-style: solid;
+  color: rgb(0 100 200);
+}
+
+.carousel-products .carousel-products-card-content a:hover {
+  text-decoration: underline;
+  text-decoration-color: rgb(0 100 200);
+}
+
+.carousel-products .carousel-products-slide-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 12px;
+  padding: 12px;
+  line-height: 0;
+}
+
+.carousel-products .carousel-products-slide-indicator button {
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  border-radius: 2px;
+  background-color: #dadada;
+  transition: background-color 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.carousel-products .carousel-products-slide-indicator button:disabled,
+.carousel-products .carousel-products-slide-indicator button:hover,
+.carousel-products .carousel-products-slide-indicator button:focus-visible {
+  background-color: var(--color-gray-700, #494949);
+}
+
+.carousel-products .carousel-products-navigation-buttons {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.carousel-products .carousel-products-navigation-buttons button {
+  pointer-events: auto;
+  position: relative;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  border-radius: 50%;
+  padding: 0;
+  background-color: rgb(19 19 19 / 25%);
+  transition: background-color 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.carousel-products .carousel-products-navigation-buttons button:hover,
+.carousel-products .carousel-products-navigation-buttons button:focus-visible {
+  background-color: rgb(19 19 19 / 75%);
+}
+
+.carousel-products .carousel-products-navigation-buttons .slide-prev::after {
+  display: block;
+  content: '';
+  border: 2px solid white;
+  border-bottom: 0;
+  border-left: 0;
+  height: 12px;
+  width: 12px;
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 2px);
+  transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+.carousel-products .carousel-products-navigation-buttons .slide-next::after {
+  display: block;
+  content: '';
+  border: 2px solid white;
+  border-top: 0;
+  border-left: 0;
+  height: 12px;
+  width: 12px;
+  position: absolute;
+  top: 50%;
+  left: calc(50% - 2px);
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+@media (width >= 600px) {
+  .carousel-products .carousel-products-slide {
+    padding: 0 56px;
+  }
+
+  .carousel-products .carousel-products-navigation-buttons {
+    left: 16px;
+    right: 16px;
+  }
+}

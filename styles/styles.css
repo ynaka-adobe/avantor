@@ -154,6 +154,11 @@
   --color-yellow-800: #373100;
   --color-yellow-900: #1e1b00;
 
+  /* Avantor brand colors (source: brandcolorcode.com/avantor) */
+  --color-brand-blue: #226192;          /* Pantone 647 C | RGB 34 97 146 */
+  --color-brand-light-blue: #2dc2fd;    /* Pantone 298 C | RGB 45 194 253 */
+  --color-brand-green: #04d367;         /* Pantone 2420 C | RGB 4 211 103 */
+
   /* named colors */
   --color-light-base: 255 255 255;
   --color-dark-base: 0 0 0;
@@ -161,8 +166,9 @@
   --color-dark: rgb(0 0 0);
   --color-text: light-dark(var(--color-dark), var(--color-light));
   --color-link: light-dark(var(--color-gray-900), var(--color-gray-100));
-  --color-brand: var(--color-purple-500);
-  --color-accent: light-dark(var(--color-magenta-600), var(--color-magenta-500));
+  --color-brand: var(--color-brand-blue);
+  --color-accent: var(--color-brand-light-blue);
+  --color-positive: var(--color-brand-green);
   --color-background: light-dark(var(--color-light), var(--color-dark));
   --color-shaded: light-dark(#f9f9f9, #111);
 

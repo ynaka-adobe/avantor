@@ -1,0 +1,29 @@
+---
+description: Avantor brand color guidelines and CSS variable usage
+alwaysApply: true
+---
+
+# Avantor Brand Colors
+
+Official brand colors from https://www.brandcolorcode.com/avantor. Always use these CSS custom properties when styling — never hardcode the hex values directly.
+
+## CSS Variables (defined in `styles/styles.css`)
+
+| Variable | Hex | Pantone | Use for |
+|---|---|---|---|
+| `--color-brand-blue` | `#226192` | 647 C | Primary brand color, CTAs, headers |
+| `--color-brand-light-blue` | `#2dc2fd` | 298 C | Accents, highlights, hover states |
+| `--color-brand-green` | `#04d367` | 2420 C | Positive states, success, badges |
+
+## Semantic aliases
+
+- `--color-brand` → `--color-brand-blue`
+- `--color-accent` → `--color-brand-light-blue`
+- `--color-positive` → `--color-brand-green`
+
+## Usage rules
+
+- Use `--color-brand` for primary buttons, links, and brand moments
+- Use `--color-accent` for hover states, highlights, and secondary CTAs
+- Use `--color-positive` for success states, availability indicators, and sustainability messaging
+- Maintain sufficient contrast against white (`#fff`) backgrounds — `--color-brand-blue` passes WCAG AA

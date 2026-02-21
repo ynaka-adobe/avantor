@@ -1,0 +1,31 @@
+/*
+ * Avantor Design System - Font Loading
+ *
+ * The original Avantor site uses "Averta" (Kostic Type Foundry), a licensed font.
+ * This project uses self-hosted Montserrat as a close geometric sans-serif alternative.
+ * If Averta font files are obtained with proper licensing, replace the src URLs below.
+ */
+
+/* Primary font - Montserrat (Averta substitute) */
+@font-face {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/styles/fonts/montserrat.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/styles/fonts/montserrat-italic.woff2") format("woff2");
+}
+
+/* Fallback font with size-adjust to reduce layout shift */
+@font-face {
+  font-family: montserrat-fallback;
+  size-adjust: 113.5%;
+  src: local("Arial");
+}

@@ -1,58 +1,4 @@
-@font-face {
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-  src: url("/styles/fonts/montserrat.woff2") format("woff2");
-  unicode-range:
-    U+0000-00FF,
-    U+0131,
-    U+0152-0153,
-    U+02BB-02BC,
-    U+02C6,
-    U+02DA,
-    U+02DC,
-    U+0304,
-    U+0308,
-    U+0329,
-    U+2000-206F,
-    U+20AC,
-    U+2122,
-    U+2191,
-    U+2193,
-    U+2212,
-    U+2215,
-    U+FEFF,
-    U+FFFD;
-}
-
-@font-face {
-  font-family: Montserrat;
-  font-style: italic;
-  font-weight: 100 900;
-  font-display: swap;
-  src: url("/styles/fonts/montserrat-italic.woff2") format("woff2");
-  unicode-range:
-    U+0000-00FF,
-    U+0131,
-    U+0152-0153,
-    U+02BB-02BC,
-    U+02C6,
-    U+02DA,
-    U+02DC,
-    U+0304,
-    U+0308,
-    U+0329,
-    U+2000-206F,
-    U+20AC,
-    U+2122,
-    U+2191,
-    U+2193,
-    U+2212,
-    U+2215,
-    U+FEFF,
-    U+FFFD;
-}
+/* Font declarations moved to styles/fonts.css */
 
 :root {
   /* grid */
@@ -60,139 +6,100 @@
   --grid-column-width: calc(var(--grid-container-width) / 12);
   --grid-gutter-width: 8.3%;
 
-  /* spacing */
+  /* spacing (extracted from avantorsciences.com) */
   --spacing-xxl: 48px;
   --spacing-xl: 32px;
   --spacing-l: 24px;
-  --spacing-m: 12px;
+  --spacing-m: 16px;
   --spacing-s: 8px;
   --spacing-xs: 4px;
 
   /* color schemes */
-  color-scheme: light dark;
-
-  /* color tokens */
-  --color-gray-100: #f1f1f1;
-  --color-gray-200: #d3d3d3;
-  --color-gray-300: #b5b5b5;
-  --color-gray-400: #999;
-  --color-gray-500: #7d7d7d;
-  --color-gray-600: #636363;
-  --color-gray-700: #494949;
-  --color-gray-800: #313131;
-  --color-gray-900: #1b1b1b;
-  --color-green-100: #e1f5e3;
-  --color-green-200: #a3e1a8;
-  --color-green-300: #60cb6a;
-  --color-green-400: #24b032;
-  --color-green-500: #1e9029;
-  --color-green-600: #187220;
-  --color-green-700: #115418;
-  --color-green-800: #0c3910;
-  --color-green-900: #072009;
-  --color-teal-100: #e4f3f5;
-  --color-teal-200: #acdbdf;
-  --color-teal-300: #71c1c9;
-  --color-teal-400: #36a7b3;
-  --color-teal-500: #108a96;
-  --color-teal-600: #0d6d77;
-  --color-teal-700: #0a5158;
-  --color-teal-800: #06363b;
-  --color-teal-900: #041e21;
-  --color-blue-100: #eaf2ff;
-  --color-blue-200: #b9d4ff;
-  --color-blue-300: #88b6ff;
-  --color-blue-400: #5898ff;
-  --color-blue-500: #2176ff;
-  --color-blue-600: #0058e4;
-  --color-blue-700: #0041a9;
-  --color-blue-800: #002c74;
-  --color-blue-900: #001942;
-  --color-purple-100: #f4edfb;
-  --color-purple-200: #dfcbf2;
-  --color-purple-300: #c9a7ea;
-  --color-purple-400: #b385e1;
-  --color-purple-500: #9d60d8;
-  --color-purple-600: #843ccb;
-  --color-purple-700: #622c98;
-  --color-purple-800: #421e66;
-  --color-purple-900: #251139;
-  --color-magenta-100: #ffebf9;
-  --color-magenta-200: #ffc0ec;
-  --color-magenta-300: #ff8fde;
-  --color-magenta-400: #ff53cc;
-  --color-magenta-500: #eb00a5;
-  --color-magenta-600: #bd0084;
-  --color-magenta-700: #8e0064;
-  --color-magenta-800: #630045;
-  --color-magenta-900: #3b002a;
-  --color-red-100: #ffecea;
-  --color-red-200: #ffc4be;
-  --color-red-300: #ff9990;
-  --color-red-400: #ff6759;
-  --color-red-500: #f81400;
-  --color-red-600: #c71000;
-  --color-red-700: #950c00;
-  --color-red-800: #670800;
-  --color-red-900: #3c0500;
-  --color-orange-100: #ffeddc;
-  --color-orange-200: #ffc895;
-  --color-orange-300: #ff9e43;
-  --color-orange-400: #f37500;
-  --color-orange-500: #c76000;
-  --color-orange-600: #9e4c00;
-  --color-orange-700: #753800;
-  --color-orange-800: #4f2600;
-  --color-orange-900: #2d1500;
-  --color-yellow-100: #fff48e;
-  --color-yellow-200: #ebd400;
-  --color-yellow-300: #cab600;
-  --color-yellow-400: #ab9a00;
-  --color-yellow-500: #8c7e00;
-  --color-yellow-600: #6e6400;
-  --color-yellow-700: #514a00;
-  --color-yellow-800: #373100;
-  --color-yellow-900: #1e1b00;
+  color-scheme: light;
 
   /* Avantor brand colors (source: brandcolorcode.com/avantor) */
-  --color-brand-blue: #226192;          /* Pantone 647 C | RGB 34 97 146 */
-  --color-brand-light-blue: #2dc2fd;    /* Pantone 298 C | RGB 45 194 253 */
-  --color-brand-green: #04d367;         /* Pantone 2420 C | RGB 4 211 103 */
+  --color-brand-blue: #226192;
+  --color-brand-light-blue: #2dc2fd;
+  --color-brand-green: #04d367;
 
-  /* named colors */
-  --color-light-base: 255 255 255;
-  --color-dark-base: 0 0 0;
-  --color-light: rgb(255 255 255);
-  --color-dark: rgb(0 0 0);
-  --color-text: light-dark(var(--color-dark), var(--color-light));
-  --color-link: light-dark(var(--color-gray-900), var(--color-gray-100));
+  /* Avantor site colors (extracted from avantorsciences.com/us/en) */
+  --color-navy: #001551;
+  --color-link-blue: #0064c8;
+  --color-accent-blue: #2ec4ff;
+  --color-dark-text: #212738;
+  --color-gray-text: #53565a;
+
+  /* neutral grays */
+  --color-gray-100: #f4f4f4;
+  --color-gray-200: #f1f1f1;
+  --color-gray-300: #efefef;
+  --color-gray-400: #ebebe6;
+  --color-gray-500: #d3d3d3;
+  --color-gray-600: #b5b5b5;
+  --color-gray-700: #53565a;
+  --color-gray-800: #333;
+  --color-gray-900: #212738;
+
+  /* semantic colors */
+  --color-light: #fff;
+  --color-dark: #000;
+  --color-text: var(--color-gray-800);
+  --color-heading: var(--color-navy);
+  --color-link: var(--color-link-blue);
   --color-brand: var(--color-brand-blue);
   --color-accent: var(--color-brand-light-blue);
   --color-positive: var(--color-brand-green);
-  --color-background: light-dark(var(--color-light), var(--color-dark));
-  --color-shaded: light-dark(#f9f9f9, #111);
+  --color-background: var(--color-light);
+  --color-shaded: var(--color-gray-100);
 
-  /* fonts */
-  --font-family: montserrat, "Trebuchet MS", sans-serif;
+  /* fonts — original site uses Averta (licensed); Montserrat as substitute */
+  --font-family: montserrat, montserrat-fallback, arial, helvetica, sans-serif;
 
-  /* headings */
-  --heading-font-size-xxl: 32.44px;
-  --heading-font-size-xl: 28.83px;
-  --heading-font-size-l: 25.63px;
-  --heading-font-size-m: 22.78px;
-  --heading-font-size-s: 20.25px;
-  --heading-font-size-xs: 18px;
-  --heading-line-height: 1.15;
+  /* headings (extracted from Avantor US site) */
+  --heading-font-size-xxl: 40px;
+  --heading-font-size-xl: 28px;
+  --heading-font-size-l: 24px;
+  --heading-font-size-m: 20px;
+  --heading-font-size-s: 18px;
+  --heading-font-size-xs: 16px;
+
+  /* heading line-heights */
+  --heading-line-height-xxl: 46px;
+  --heading-line-height-xl: 40px;
+  --heading-line-height-l: 34px;
+  --heading-line-height-m: 28px;
+  --heading-line-height-s: 24px;
+  --heading-line-height: 1.4;
 
   /* body */
-  --body-font-size-xxxl: 25px;
+  --body-font-size-xxxl: 24px;
   --body-font-size-xxl: 22px;
   --body-font-size-xl: 20px;
   --body-font-size-l: 18px;
   --body-font-size-m: 16px;
   --body-font-size-s: 14px;
-  --body-font-size-xs: 12px;
-  --body-line-height: 1.6;
+  --body-font-size-xs: 12.8px;
+  --body-line-height: 1.5;
+
+  /* buttons (extracted — distinctive Avantor asymmetric pill shape) */
+  --button-border-radius: 24px 40px 40px 6px;
+  --button-padding: 6px 42px 6px 12px;
+  --button-height: 40px;
+  --button-font-weight: 700;
+  --button-text-transform: uppercase;
+  --button-transition: 0.1s;
+  --button-primary-bg: var(--color-navy);
+  --button-primary-color: var(--color-light);
+  --button-primary-on-dark-bg: var(--color-light);
+  --button-primary-on-dark-color: var(--color-navy);
+
+  /* link styles */
+  --link-transition: color 0.2s ease;
+
+  /* transitions */
+  --transition-fast: 0.1s;
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.3s ease;
 
   /* misc */
   --header-height: 64px;
@@ -219,6 +126,8 @@ body {
   font-size: var(--body-font-size-m);
   line-height: var(--body-line-height);
   padding: var(--header-height) 0 0;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizelegibility;
 
   &.has-breadcrumb {
     margin: calc(var(--header-height) + var(--breadcrumb-height)) 0 0;
@@ -239,58 +148,77 @@ header {
 
 a {
   color: var(--color-link);
+  text-decoration: none;
+  transition: var(--link-transition);
 
+  &:hover {
+    text-decoration: underline;
+  }
+
+  /* Avantor primary button — asymmetric pill shape */
   &.btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     line-height: 1;
-    font-weight: 500;
+    font-weight: var(--button-font-weight);
+    font-size: var(--body-font-size-m);
     text-decoration: none;
-    border: 2px solid;
-    padding: 8px 12px;
+    text-transform: var(--button-text-transform);
+    border: 1px solid transparent;
+    border-radius: var(--button-border-radius);
+    padding: var(--button-padding);
+    height: var(--button-height);
     box-sizing: border-box;
+    cursor: pointer;
+    transition: var(--button-transition);
 
-    &.btn-outline {
-      background: transparent;
+    &:hover {
+      text-decoration: none;
+      opacity: 0.9;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-link-blue);
+      outline-offset: 2px;
+    }
+  }
+
+  &.btn-primary {
+    color: var(--button-primary-color);
+    background-color: var(--button-primary-bg);
+
+    &:hover {
+      background-color: var(--color-dark-text);
+    }
+  }
+
+  &.btn-primary-on-dark {
+    color: var(--button-primary-on-dark-color);
+    background-color: var(--button-primary-on-dark-bg);
+
+    &:hover {
+      background-color: var(--color-gray-200);
     }
   }
 
   &.btn-accent {
     color: #fff;
     background: var(--color-accent);
-    border: 2px solid var(--color-accent);
 
-    &.btn-outline {
-      color: var(--color-accent);
-    }
-  }
-
-  &.btn-primary {
-    color: var(--color-background);
-    background-color: var(--color-text);
-
-    &.btn-outline {
-      color: var(--color-text);
-      background: transparent;
+    &:hover {
+      background: var(--color-brand-light-blue);
     }
   }
 
   &.btn-secondary {
-    color: var(--color-background);
-    background-color: var(--color-gray-500);
-    border: 2px solid var(--color-gray-500);
+    color: var(--color-navy);
+    background-color: transparent;
+    border: 1px solid var(--color-navy);
 
-    &.btn-outline {
-      color: var(--color-gray-500);
-    }
-  }
-
-  &.btn-negative {
-    color: #fff;
-    background-color: var(--color-red-600);
-    border: 2px solid var(--color-red-600);
-
-    &.btn-outline {
-      color: var(--color-red-600);
+    &:hover {
+      background-color: var(--color-navy);
+      color: #fff;
     }
   }
 }
@@ -298,10 +226,33 @@ a {
 /* sections */
 .section {
   display: block;
+  padding: var(--spacing-xl) var(--spacing-m);
 
   > .default-content {
     max-width: var(--grid-container-width);
     margin: 0 auto;
+  }
+
+  /* Avantor section variants */
+  &.dark {
+    background-color: var(--color-navy);
+    color: var(--color-light);
+
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--color-light);
+    }
+
+    a {
+      color: var(--color-accent-blue);
+    }
+  }
+
+  &.shaded {
+    background-color: var(--color-shaded);
+  }
+
+  &.highlight {
+    background-color: var(--color-gray-200);
   }
 }
 
@@ -332,18 +283,36 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 600;
+  font-weight: 700;
   line-height: var(--heading-line-height);
+  color: var(--color-heading);
 }
 
-h1 { font-size: var(--heading-font-size-xxl); }
-h2 {
+h1 {
   font-size: var(--heading-font-size-xl);
-  margin: 16px 0;
+  line-height: var(--heading-line-height-xl);
+  font-weight: 400;
+  margin: 0 0 8px;
+}
+
+h2 {
+  font-size: var(--heading-font-size-l);
+  line-height: var(--heading-line-height-l);
+  margin: 0 0 var(--spacing-xl);
   text-align: left;
 }
-h3 { font-size: var(--heading-font-size-l); }
-h4 { font-size: var(--heading-font-size-m); }
+
+h3 {
+  font-size: var(--heading-font-size-m);
+  line-height: var(--heading-line-height-m);
+  margin: 0 0 8px;
+}
+
+h4 {
+  font-size: var(--heading-font-size-s);
+  line-height: var(--heading-line-height-s);
+}
+
 h5 { font-size: var(--heading-font-size-s); }
 h6 { font-size: var(--heading-font-size-xs); }
 

@@ -15,11 +15,13 @@ export default function decorate(block) {
     if (headingText) startIdx = 1;
   }
 
-  const ul = document.createElement('ul');
-  rows.slice(startIdx).forEach((row) => {
+  const grid = document.createElement('div');
+  grid.className = 'cards-highlight-grid';
+
+  let secondaryContainer = null;
+
+  rows.slice(startIdx).forEach((row, idx) => {
     const cols = [...row.children];
-    const li = document.createElement('li');
-    li.classList.add('cards-highlight-card');
 
     const imageCell = document.createElement('div');
     imageCell.className = 'cards-highlight-card-image';
@@ -27,18 +29,29 @@ export default function decorate(block) {
     const contentCell = document.createElement('div');
     contentCell.className = 'cards-highlight-card-content';
 
-    // Col 1: image, Col 2: content (matches hero-promo / cards-product structure)
-    if (cols[0]) {
-      while (cols[0].firstChild) imageCell.append(cols[0].firstChild);
-    }
-    if (cols[1]) {
-      while (cols[1].firstChild) contentCell.append(cols[1].firstChild);
-    }
+    if (cols[0]) while (cols[0].firstChild) imageCell.append(cols[0].firstChild);
+    if (cols[1]) while (cols[1].firstChild) contentCell.append(cols[1].firstChild);
 
-    if (imageCell.children.length) li.append(imageCell);
-    if (contentCell.children.length) li.append(contentCell);
-
-    if (li.children.length) ul.append(li);
+    if (idx === 0) {
+      // First card → large featured card (left column)
+      const featured = document.createElement('div');
+      featured.className = 'cards-highlight-featured';
+      if (imageCell.children.length) featured.append(imageCell);
+      if (contentCell.children.length) featured.append(contentCell);
+      grid.append(featured);
+    } else {
+      // Remaining cards → small stacked cards (right column)
+      if (!secondaryContainer) {
+        secondaryContainer = document.createElement('div');
+        secondaryContainer.className = 'cards-highlight-secondary';
+        grid.append(secondaryContainer);
+      }
+      const card = document.createElement('article');
+      card.className = 'cards-highlight-card';
+      if (imageCell.children.length) card.append(imageCell);
+      if (contentCell.children.length) card.append(contentCell);
+      secondaryContainer.append(card);
+    }
   });
 
   block.textContent = '';
@@ -50,9 +63,5 @@ export default function decorate(block) {
     block.append(heading);
   }
 
-  block.append(ul);
-
-  if (ul.children.length === 2) block.classList.add('two-cards');
-  if (ul.children.length === 3) block.classList.add('three-cards');
-  if (ul.children.length === 4) block.classList.add('four-cards');
+  block.append(grid);
 }

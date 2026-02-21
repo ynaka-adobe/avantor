@@ -96,6 +96,7 @@
     .fg-text {
       width: var(--grid-container-width);
       margin: 0 auto;
+      max-width: 768px;
     }
 
     div > *:first-child {
@@ -112,6 +113,40 @@
 
     .hero-heading {
       margin: 0;
+    }
+
+    /* avtr-card Content_Cta — title */
+    .avtr-card-title {
+      margin-block-end: 12px;
+
+      h1, h2, h3, h4 {
+        margin-block: 0;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 32px;
+        color: inherit;
+      }
+    }
+
+    /* avtr-card Content_Cta — body */
+    .avtr-card-body {
+      margin-block-start: 12px;
+
+      p {
+        font-size: 16px;
+        line-height: 24px;
+        margin-block: 0 8px;
+        color: inherit;
+      }
+
+      p:last-child {
+        margin-block-end: 0;
+      }
+    }
+
+    /* avtr-card Content_Cta — CTA */
+    .avtr-card-cta {
+      margin-block-start: 24px;
     }
   }
 
@@ -167,6 +202,20 @@
       .fg-text {
         width: unset;
         margin: unset;
+      }
+
+      /* Content_Cta title grows at tablet+ */
+      .avtr-card-title h1,
+      .avtr-card-title h2,
+      .avtr-card-title h3,
+      .avtr-card-title h4 {
+        font-size: 36px;
+        line-height: 44px;
+      }
+
+      .avtr-card-body p {
+        font-size: 18px;
+        line-height: 28px;
       }
     }
 

@@ -228,6 +228,11 @@ a {
   display: block;
   padding: var(--spacing-xl) var(--spacing-m);
 
+  &:first-of-type {
+    padding-block-start: 0;
+    padding-inline: 0;
+  }
+
   > .default-content {
     max-width: var(--grid-container-width);
     margin: 0 auto;

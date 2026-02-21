@@ -1,5 +1,8 @@
 /* ============================================================
    columns-feature — default variant
+   Modelled after Feature_Card_Img_After / Feature_Card_Img_Before
+   (avantorsciences.com): image on one side, avtr-card-content
+   panel on the other with a -100px right margin overlap.
    ============================================================ */
 .columns-feature {
   margin: 16px auto;
@@ -9,10 +12,13 @@
 .columns-feature > div {
   display: flex;
   flex-direction: column;
+  min-height: 500px;
 }
 
 .columns-feature img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .columns-feature > div > div {
@@ -27,16 +33,90 @@
   display: block;
 }
 
+/* avtr-card-content — text column with floating card treatment */
+.columns-feature .columns-feature-text-col {
+  padding: 40px 22px;
+  background-color: var(--color-background);
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgb(0 0 0 / 0.15);
+  position: relative;
+  z-index: 1;
+}
+
+/* avtr-card-title */
+.columns-feature .avtr-card-title {
+  margin-block-end: 12px;
+}
+
+.columns-feature .avtr-card-title h1,
+.columns-feature .avtr-card-title h2,
+.columns-feature .avtr-card-title h3,
+.columns-feature .avtr-card-title h4 {
+  margin-block: 0;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 30px;
+  color: var(--color-text);
+}
+
+/* avtr-card-body */
+.columns-feature .avtr-card-body {
+  margin-block-start: 12px;
+}
+
+.columns-feature .avtr-card-body p {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--color-text);
+  margin-block: 0 8px;
+}
+
+.columns-feature .avtr-card-body p:last-child {
+  margin-block-end: 0;
+}
+
+/* inline links within body text */
+.columns-feature .avtr-card-body a {
+  color: var(--color-brand);
+  text-decoration: none;
+}
+
+.columns-feature .avtr-card-body a:hover {
+  text-decoration: underline;
+}
+
+/* avtr-card-cta */
+.columns-feature .avtr-card-cta {
+  margin-block-start: 24px;
+}
+
 @media (width >= 900px) {
   .columns-feature > div {
     align-items: center;
     flex-direction: unset;
-    gap: 24px;
+    gap: 0;
   }
 
   .columns-feature > div > div {
     flex: 1;
     order: unset;
+  }
+
+  /* avtr-card-content: extend 50px to the right over the image */
+  .columns-feature .columns-feature-text-col {
+    margin-right: -50px;
+    padding: 80px;
+  }
+
+  .columns-feature .avtr-card-title h2,
+  .columns-feature .avtr-card-title h3 {
+    font-size: 32px;
+    line-height: 38px;
+  }
+
+  .columns-feature .avtr-card-body p {
+    font-size: 18px;
+    line-height: 28px;
   }
 }
 
@@ -95,26 +175,34 @@
   color: var(--color-light);
   max-width: 680px;
   order: 1;
+  /* reset default-variant card panel styles */
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: none;
 }
 
-.columns-feature.overlay .columns-feature-text-col h1,
-.columns-feature.overlay .columns-feature-text-col h2,
-.columns-feature.overlay .columns-feature-text-col h3,
-.columns-feature.overlay .columns-feature-text-col h4 {
+.columns-feature.overlay .avtr-card-title h1,
+.columns-feature.overlay .avtr-card-title h2,
+.columns-feature.overlay .avtr-card-title h3,
+.columns-feature.overlay .avtr-card-title h4 {
   color: var(--color-light);
   margin-block-start: 0;
   font-size: var(--heading-font-size-l);
   line-height: 1.2;
 }
 
-.columns-feature.overlay .columns-feature-text-col p {
+.columns-feature.overlay .avtr-card-body p {
   font-size: var(--body-font-size-m);
   line-height: 1.6;
-  margin-block: 12px 24px;
+  color: var(--color-light);
   opacity: 0.9;
 }
 
-.columns-feature.overlay .columns-feature-text-col .btn {
+.columns-feature.overlay .avtr-card-body a {
+  color: var(--color-light);
+}
+
+.columns-feature.overlay .avtr-card-cta .btn {
   display: inline-block;
   font-weight: 600;
   font-size: var(--body-font-size-s);
@@ -125,11 +213,12 @@
   border: 2px solid var(--color-light);
   color: var(--color-light);
   background: transparent;
+  border-radius: var(--button-border-radius);
   transition: background 0.2s, color 0.2s;
 }
 
-.columns-feature.overlay .columns-feature-text-col .btn:hover,
-.columns-feature.overlay .columns-feature-text-col .btn:focus {
+.columns-feature.overlay .avtr-card-cta .btn:hover,
+.columns-feature.overlay .avtr-card-cta .btn:focus {
   background: var(--color-light);
   color: var(--color-brand-blue);
 }
@@ -166,8 +255,8 @@
     max-width: 560px;
   }
 
-  .columns-feature.overlay .columns-feature-text-col h2,
-  .columns-feature.overlay .columns-feature-text-col h3 {
+  .columns-feature.overlay .avtr-card-title h2,
+  .columns-feature.overlay .avtr-card-title h3 {
     font-size: var(--heading-font-size-xl);
   }
 }

@@ -6,7 +6,6 @@ const { locale } = getConfig();
 
 const HEADER_PATH = '/fragments/nav/header';
 const HEADER_ACTIONS = [
-  '/tools/widgets/scheme',
   '/tools/widgets/language',
   '/tools/widgets/toggle',
 ];
@@ -91,17 +90,25 @@ async function decorateAction(header, pattern) {
   if (!link) return;
 
   const icon = link.querySelector('.icon');
-  const text = link.textContent;
+  // Derive action name from icon class (e.g. "icon-globe" → "globe")
+  // or fall back to the last segment of the pattern (e.g. "/tools/widgets/toggle" → "toggle")
+  const actionName = icon
+    ? icon.classList[1]?.replace('icon-', '')
+    : pattern.split('/').at(-1);
+
   const btn = document.createElement('button');
   if (icon) btn.append(icon);
-  if (text) {
+
+  const rawText = icon ? link.textContent : '';
+  if (rawText.trim()) {
     const textSpan = document.createElement('span');
     textSpan.className = 'text';
-    textSpan.textContent = text;
+    textSpan.textContent = rawText.trim();
     btn.append(textSpan);
   }
+
   const wrapper = document.createElement('div');
-  wrapper.className = `action-wrapper ${icon.classList[1].replace('icon-', '')}`;
+  wrapper.className = `action-wrapper ${actionName}`;
   wrapper.append(btn);
   link.parentElement.parentElement.replaceChild(wrapper, link.parentElement);
 
@@ -142,11 +149,39 @@ function decorateNavItem(li) {
 function decorateBrandSection(section) {
   section.classList.add('brand-section');
   const brandLink = section.querySelector('a');
-  const [, text] = brandLink.childNodes;
-  const span = document.createElement('span');
-  span.className = 'brand-text';
-  span.append(text);
-  brandLink.append(span);
+  if (!brandLink) return;
+
+  const { codeBase } = getConfig();
+
+  // Replace any remote picture/img with the local logo SVG
+  const picture = brandLink.querySelector('picture');
+  const remoteImg = !picture && brandLink.querySelector('img');
+  if (picture || remoteImg) {
+    const img = document.createElement('img');
+    img.src = `${codeBase}/img/icons/logo.svg`;
+    img.alt = 'Avantor';
+    img.width = 300;
+    img.height = 43;
+    (picture || remoteImg).replaceWith(img);
+  }
+
+  // Hide any remaining text nodes as screen-reader-only brand text
+  const iconOrImg = brandLink.querySelector('.icon, img, svg');
+  const textNode = [...brandLink.childNodes].find(
+    (n) => n.nodeType === Node.TEXT_NODE && n.textContent.trim(),
+  );
+  if (textNode) {
+    const span = document.createElement('span');
+    span.className = 'brand-text';
+    span.append(textNode);
+    brandLink.append(span);
+  } else if (!iconOrImg) {
+    // Fallback: no image and no text — add hidden brand name for a11y
+    const span = document.createElement('span');
+    span.className = 'brand-text';
+    span.textContent = 'Avantor';
+    brandLink.append(span);
+  }
 }
 
 function decorateNavSection(section) {
@@ -177,7 +212,7 @@ async function decorateHeader(fragment) {
   if (sections[2]) decorateActionSection(sections[2]);
 
   for (const pattern of HEADER_ACTIONS) {
-    decorateAction(fragment, pattern);
+    await decorateAction(fragment, pattern);
   }
 }
 

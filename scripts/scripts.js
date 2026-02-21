@@ -35,6 +35,11 @@ const decorateArea = ({ area = document }) => {
 };
 
 export async function loadPage() {
+  // Always force light scheme — dark mode is not used for this brand
+  localStorage.setItem('color-scheme', 'light-scheme');
+  document.body.classList.remove('dark-scheme');
+  document.body.classList.add('light-scheme');
+
   setConfig({ hostnames, locales, linkBlocks, components, decorateArea });
   await loadArea();
 }

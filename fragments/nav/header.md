@@ -11,5 +11,5 @@
 
 ---
 
-- [Order Entry](https://www.avantorsciences.com/us/en/my-account/quick-order)
+- [:globe:](/tools/widgets/language)
 - [:toggle:](/tools/widgets/toggle)

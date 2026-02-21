@@ -82,6 +82,13 @@ footer {
     margin: 0;
   }
 
+  .section-copyright img {
+    display: block;
+    height: 32px;
+    width: auto;
+    margin-bottom: 8px;
+  }
+
   .section .default-content {
     max-width: initial;
     margin: initial;

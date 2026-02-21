@@ -1,6 +1,6 @@
 header {
-  --logo-width: 300px;
-  --logo-height: 43px;
+  --logo-width: 250px;
+  --logo-height: 60px;
   --mega-columns: 4;
 
   display: block;
@@ -125,6 +125,7 @@ header {
     .default-content {
       height: var(--header-height);
       display: flex;
+      align-items: center;
       justify-content: space-between;
 
       p,
@@ -167,11 +168,18 @@ header {
     max-height: 64px;
     overflow: hidden;
     transition: all 0.2s ease-in-out;
+    padding: 0;
 
     > .default-content {
       display: flex;
       justify-content: end;
       align-items: center;
+
+      ul {
+        display: flex;
+        align-items: center;
+        height: 100%;
+      }
     }
 
     > .block-content {

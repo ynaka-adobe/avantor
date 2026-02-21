@@ -54,6 +54,6 @@ Avantor is a leading life science tools company and global provider of mission-c
 
 ---
 
-![Avantor](https://www.avantorsciences.com/content/dam/avantor-redesign/avantor-logo-tm-rgb.svg)
+![Avantor](/img/icons/logo.svg)
 
 (c) Avantor, Inc.

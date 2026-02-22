@@ -171,4 +171,17 @@
   .hero-product-cell--copy {
     padding: 48px 32px;
   }
+
+  /* Light variant: image bleeds 240px left under the SVG curve */
+  .hero-product.light .hero-product-cell--svg {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-product.light .hero-product-cell--image {
+    position: relative;
+    left: -240px;
+    width: calc(100% + 240px);
+    z-index: 1;
+  }
 }

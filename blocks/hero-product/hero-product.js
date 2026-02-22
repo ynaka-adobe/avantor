@@ -37,7 +37,8 @@ export default function decorate(block) {
     if (cta) {
       const ctaP = document.createElement('p');
       const a = document.createElement('a');
-      a.className = 'av-btn av-btn--primary av-btn--on-dark';
+      const isLight = block.classList.contains('light');
+      a.className = isLight ? 'av-btn av-btn--primary' : 'av-btn av-btn--primary av-btn--on-dark';
       a.href = cta.href;
       if (cta.target) a.target = cta.target;
       a.textContent = cta.textContent.trim() || 'LEARN MORE';
@@ -52,7 +53,8 @@ export default function decorate(block) {
   /* Cell 2: SVG curve */
   const svgCell = document.createElement('div');
   svgCell.className = 'hero-product-cell hero-product-cell--svg';
-  const svgUrl = new URL('./dark-theme.svg', import.meta.url).href;
+  const svgFile = block.classList.contains('light') ? 'light-theme.svg' : 'dark-theme.svg';
+  const svgUrl = new URL(`./${svgFile}`, import.meta.url).href;
   const svgImg = document.createElement('img');
   svgImg.src = svgUrl;
   svgImg.alt = '';

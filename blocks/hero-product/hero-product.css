@@ -104,6 +104,25 @@
   opacity: 0.9;
 }
 
+/* Light variant: white copy panel, dark text */
+.hero-product.light .hero-product-cell--copy {
+  background-color: #fff;
+  color: #001551;
+}
+
+.hero-product.light .hero-product-cell--copy .avtr-card-title {
+  color: #001551;
+}
+
+.hero-product.light .hero-product-cell--copy .avtr-card-body {
+  color: #333;
+}
+
+.hero-product.light .av-btn--primary {
+  background-color: var(--color-brand);
+  color: #fff;
+}
+
 /* No-image variant: hide image cell, extend copy/svg */
 .hero-product.no-image .hero-product-cell--image {
   display: none;

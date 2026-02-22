@@ -99,29 +99,35 @@ export default async function init(a) {
   const persona = pageParams.get('persona');
   const now = getDate();
 
-  // Narrow to persona-named rows when ?persona= is present
-  const activeData = persona ? data.filter((evt) => evt.name === persona) : data;
-
-  // Find the first date-matched entry in the active set
-  const found = activeData.find((evt) => {
-    if (!(evt.start && evt.end)) return false;
-    try {
-      const start = Date.parse(evt.start);
-      const end = Date.parse(evt.end);
-      return now > start && now < end;
-    } catch {
-      config.log(`Could not evaluate persona event: ${evt.name}`);
-      return false;
-    }
-  });
-
-  // Default within the active (persona-filtered) set
-  const activeDefault = activeData.find((evt) => !(evt.start && evt.end));
-
-  // Global fallback default (entry with no name, no dates)
+  // Global default: entry with no start/end dates
   const defEvent = data.find((evt) => !(evt.start && evt.end));
 
-  const event = found || activeDefault || defEvent;
+  let event;
+  if (persona) {
+    // Narrow to persona-named rows
+    const activeData = data.filter((evt) => evt.name === persona);
+
+    // Find the first date-matched entry in the persona set
+    const found = activeData.find((evt) => {
+      if (!(evt.start && evt.end)) return false;
+      try {
+        const start = Date.parse(evt.start);
+        const end = Date.parse(evt.end);
+        return now > start && now < end;
+      } catch {
+        config.log(`Could not evaluate persona event: ${evt.name}`);
+        return false;
+      }
+    });
+
+    // Persona-specific default (undated entry for this persona)
+    const activeDefault = activeData.find((evt) => !(evt.start && evt.end));
+
+    event = found || activeDefault || defEvent;
+  } else {
+    // No persona param: show the global default
+    event = defEvent;
+  }
 
   if (!event) {
     await removePersona(a);

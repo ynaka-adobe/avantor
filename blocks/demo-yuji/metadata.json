@@ -1,0 +1,27 @@
+{
+  "variantName": "demo-yuji",
+  "version": "1.0.0",
+  "created": "2026-02-20T00:00:00.000Z",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "banner",
+    "imagePattern": "left-aligned"
+  },
+  "contentPattern": {
+    "structure": "image (left) + content (right)",
+    "columns": 2
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "promotional banners",
+      "feature callouts",
+      "hero-lite strips"
+    ],
+    "notSuitableFor": [
+      "card grids",
+      "full-height heroes",
+      "content-only sections"
+    ]
+  }
+}

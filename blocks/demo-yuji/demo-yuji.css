@@ -1,0 +1,73 @@
+.demo-yuji {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 1400px;
+  height: 150px;
+  margin: 50px auto 0;
+  background-color: #efefef;
+  overflow: hidden;
+}
+
+.demo-yuji > div {
+  display: contents;
+}
+
+.demo-yuji-image {
+  flex: 0 0 auto;
+  height: 100%;
+  line-height: 0;
+}
+
+.demo-yuji-image img,
+.demo-yuji-image picture {
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.demo-yuji-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 var(--spacing-xl, 24px);
+}
+
+.demo-yuji-content h1,
+.demo-yuji-content h2,
+.demo-yuji-content h3,
+.demo-yuji-content h4 {
+  margin: 0 0 4px;
+  color: var(--color-brand);
+}
+
+.demo-yuji-content p {
+  margin: 0;
+  color: var(--color-text);
+}
+
+@media (width < 600px) {
+  .demo-yuji {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .demo-yuji-image {
+    width: 100%;
+    height: 120px;
+  }
+
+  .demo-yuji-image img,
+  .demo-yuji-image picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .demo-yuji-content {
+    padding: var(--spacing-m, 16px);
+  }
+}

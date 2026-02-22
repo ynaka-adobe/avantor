@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-import { fetchSchedule, fetchFromAem } from './handlers/aem.js';
+import { fetchSchedule, fetchPersonaSchedule, fetchFromAem } from './handlers/aem.js';
 import fetchDaSc from './handlers/dasc.js';
 
 // Redirect /path/index to /path/ (AEM EDS serves index doc at trailing-slash URL)
@@ -28,6 +28,11 @@ const getIndexRedirect = (request, url) => {
 };
 
 const ROUTES = [
+  // Handle persona schedule (more specific match must precede general schedules)
+  {
+    match: (path) => path.includes('/schedules/main-persona') && path.endsWith('json'),
+    handler: fetchPersonaSchedule,
+  },
   // Handle schedule manifests
   {
     match: (path) => path.includes('/schedules/') && path.endsWith('json'),
@@ -89,7 +94,7 @@ const formatSearchParams = (url) => {
       if (!['format', 'height', 'optimize', 'width'].includes(key)) searchParams.delete(key);
     }
   } else if (getExtension(url.pathname) === 'json') {
-    const jsonKeys = ['limit', 'offset', 'sheet', 'start', 'end'];
+    const jsonKeys = ['limit', 'offset', 'sheet', 'start', 'end', 'persona'];
     for (const [key] of searchParams.entries()) {
       if (!jsonKeys.includes(key)) searchParams.delete(key);
     }

@@ -59,3 +59,43 @@ export async function fetchSchedule({ url, request, cache, savedSearch }) {
 
   return formatSchedule(resp, url);
 }
+
+const formatPersonaSchedule = async (response, urlOverride) => {
+  const schedule2Response = (json) => new Response(JSON.stringify(json), response);
+
+  const json = await response.json();
+  if (!json.data?.[0]?.fragment) return schedule2Response(json);
+
+  const now = urlOverride?.searchParams?.get('start')
+    ? new Date(urlOverride.searchParams.get('start')).getTime()
+    : Date.now();
+
+  const persona = urlOverride?.searchParams?.get('persona');
+
+  const data = [];
+  for (const [idx, schedule] of json.data.entries()) {
+    const { start, end, name } = schedule;
+
+    if (!start && !end) {
+      // Always include default (undated) entries as fallback candidates
+      data.push(json.data[idx]);
+    } else {
+      const startDate = new Date(start);
+      const endDate = new Date(end);
+      if (startDate < now && endDate > now) {
+        // When a persona is specified, only include dated entries matching that persona
+        if (!persona || name === persona) data.push(json.data[idx]);
+      }
+    }
+  }
+
+  return schedule2Response({ ...json, data });
+};
+
+export async function fetchPersonaSchedule({ url, request, cache, savedSearch }) {
+  const resp = await fetchFromAem({ request, cache, savedSearch });
+
+  if (resp.status === 301 || resp.status === 304) return resp;
+
+  return formatPersonaSchedule(resp, url);
+}

@@ -172,13 +172,13 @@
     padding: 48px 32px;
   }
 
-  /* Light variant: image bleeds 240px left under the SVG curve */
-  .hero-product.light .hero-product-cell--svg {
+  /* Image bleeds 240px left under the SVG curve on desktop */
+  .hero-product-cell--svg {
     position: relative;
     z-index: 2;
   }
 
-  .hero-product.light .hero-product-cell--image {
+  .hero-product-cell--image {
     position: relative;
     left: -240px;
     width: calc(100% + 240px);

@@ -1,0 +1,93 @@
+/* conference-banner — banner block, max-width 1400, height 150, column1 left */
+
+.conference-banner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: var(--grid-container-width);
+  height: 150px;
+  margin: 0 auto;
+  background-color: var(--color-gray-300);
+  overflow: hidden;
+}
+
+.conference-banner > div {
+  display: contents;
+}
+
+.conference-banner-col-1 {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-inline: var(--spacing-xl);
+}
+
+.conference-banner-col-1:only-child {
+  flex: 1;
+}
+
+.conference-banner-col-1 img,
+.conference-banner-col-1 picture {
+  height: 100%;
+  width: auto;
+  max-height: 150px;
+  object-fit: contain;
+  display: block;
+}
+
+.conference-banner-col-2,
+.conference-banner-col-3 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 var(--spacing-xl);
+}
+
+.conference-banner-col h1,
+.conference-banner-col h2,
+.conference-banner-col h3,
+.conference-banner-col h4 {
+  margin: 0 0 var(--spacing-xs);
+  color: var(--color-heading);
+}
+
+.conference-banner-col p {
+  margin: 0;
+  color: var(--color-text);
+}
+
+.conference-banner-col a {
+  color: var(--color-link);
+}
+
+@media (width < 600px) {
+  .conference-banner {
+    flex-direction: column;
+    height: auto;
+    min-height: 150px;
+  }
+
+  .conference-banner-col-1 {
+    width: 100%;
+    height: auto;
+    min-height: 80px;
+    padding: var(--spacing-m);
+    justify-content: center;
+  }
+
+  .conference-banner-col-1 img,
+  .conference-banner-col-1 picture {
+    width: 100%;
+    height: auto;
+    max-height: 120px;
+    object-fit: contain;
+  }
+
+  .conference-banner-col-2,
+  .conference-banner-col-3 {
+    padding: var(--spacing-m);
+  }
+}
